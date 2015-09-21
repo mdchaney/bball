@@ -79,6 +79,7 @@ def made_basket(pin=None):
 
 	basket_id = None
 
+	# Given the pin # get a basket_id
 	for k, basket_info in baskets.items():
 		if basket_info['pin'] == pin:
 			basket_id = k
