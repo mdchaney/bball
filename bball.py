@@ -60,6 +60,7 @@ def setup():
 	max7219_send(SetDecodeMode, 0x3F)
 	max7219_send(SetDisplayTest, 0)
 	max7219_send(SetIntensity, 1)
+	max7219_send(SetScanLimit, 5)
 	max7219_send(SetShutdown, 1)
 
 	for basket_id, basket_info in baskets.items():
