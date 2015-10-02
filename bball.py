@@ -85,7 +85,7 @@ def made_basket(pin=None):
 			break
 
 	if basket_id:
-		basket = baskets[k]
+		basket = baskets[basket_id]
 		basket['score'] += 2
 		update_score(basket['score'], basket['display_offset'])
 	else:
