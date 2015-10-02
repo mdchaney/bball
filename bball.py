@@ -53,8 +53,6 @@ def setup():
 	GPIO.output(ClockPin, GPIO.HIGH)
 	GPIO.output(LoadPin, GPIO.HIGH)
 
-	GPIO.setup(Basket1Pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-	GPIO.setup(Basket2Pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 	GPIO.setup(PowerPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 	max7219_send(SetDecodeMode, 0x3F)
@@ -64,6 +62,7 @@ def setup():
 	max7219_send(SetShutdown, 1)
 
 	for basket_id, basket_info in baskets.items():
+		GPIO.setup(basket_info['pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
 		GPIO.add_event_detect(basket_info['pin'], GPIO.FALLING, callback=made_basket, bouncetime = debounce_wait)
 		update_score(basket_info['score'], basket_info['display_offset'])
 
